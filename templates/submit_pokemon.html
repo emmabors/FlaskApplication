@@ -16,5 +16,22 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
-{{pokemon_data}}
+{% if pokemon_data %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Base Experience</th>
+        <th scope="col">Sprite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{pokemon_data.Pokemon}}</th>
+        <td>{{pokemon_data.Base_experience}}</td>
+        <td>{{pokemon_data.Sprite}}</td>
+      </tr> 
+    </tbody>
+  </table>
+{% endif %}
 {% endblock %}
