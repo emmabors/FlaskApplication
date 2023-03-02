@@ -16,12 +16,15 @@ def submit_pokemon():
         print(pokemon_name)
         url = f'https://pokeapi.co/api/v2/pokemon/{pokemon_name.lower()}'
         response = requests.get(url)
-        pokemon = response.json()
-        pokemon_data = {
-        'Pokemon': pokemon['forms'][0]['name'],
-        'Base_experience': pokemon['base_experience'],
-        'Sprite': pokemon['sprites']['back_default']
-        }
+        if response.ok:
+            pokemon = response.json()
+            pokemon_data = {
+            'Pokemon': pokemon['forms'][0]['name'],
+            'Base_experience': pokemon['base_experience'],
+            'Sprite': pokemon['sprites']['back_default']
+            }
+        else:
+            return 'Invalid entry. Please enter Pokemon name'
         return render_template('submit_pokemon.html', pokemon_data=pokemon_data)
     return render_template('submit_pokemon.html', pokemons=pokemons)
 
