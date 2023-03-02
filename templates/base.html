@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Application</title>
+</head>
+<body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link home" aria-current="page" href="/submit_pokemon.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-Pokemon" href="/submit_pokemon.html">Pokemon</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li> -->
+      </ul>
+    <h2> Here, you can enter a pokemon name and I will tell you some stats.</h2>
+</body>
+<div class="container">
+    
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+</html>

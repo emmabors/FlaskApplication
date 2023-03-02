@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a> </a>
+<p>Here are some examples of different Pokemon...</p>
+<ul>
+    {% for pokemon in pokemons %}
+    <li>{{pokemon}}</li>
+    {% endfor %}
+</ul>
+<form action="/submit_pokemon" method="POST">
+    <div class="mb-3">
+      <label for="pokemon_name" class="form-label">Pokemon Name:</label>
+      <input type="pokemon_name" class="form-control" id="pokemon_name" name="pokemon_name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+{{pokemon_data}}
+{% endblock %}
