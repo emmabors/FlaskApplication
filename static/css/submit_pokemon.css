@@ -1,0 +1,14 @@
+p {
+    text-align: center;
+    margin-left: 45px;
+}
+
+.pokemons-names{
+    text-align: center;
+}
+
+.listedpoke-container{
+    display: flex;
+    min-width: 50px;
+}
+

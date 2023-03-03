@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/submit_pokemon.css') }}">
+{% endblock %}
+
 <a> </a>
 <p>Here are some examples of different Pokemon...</p>
-<ul>
+<ul class="pokemons-names">
     {% for pokemon in pokemons %}
     <li>{{pokemon}}</li>
     {% endfor %}
 </ul>
-<form action="/submit_pokemon" method="POST">
+<form action="/submit_pokemon" method="POST" class="list">
     <div class="mb-3">
       <label for="pokemon_name" class="form-label">Pokemon Name:</label>
       <input type="pokemon_name" class="form-control" id="pokemon_name" name="pokemon_name">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <div style="color: red;">
+        <small>{{error}}</small>
+    </div>
   </form>
 
 {% if pokemon_data %}
@@ -26,11 +34,13 @@
       </tr>
     </thead>
     <tbody>
+    <div class="listedpoke-container">
       <tr>
-        <th scope="row">{{pokemon_data.Pokemon}}</th>
+        <th scope="row">{{pokemon_data.Pokemon.title()}}</th>
         <td>{{pokemon_data.Base_experience}}</td>
         <td>{{pokemon_data.Sprite}}</td>
-      </tr> 
+      </tr>
+    </div> 
     </tbody>
   </table>
 {% endif %}

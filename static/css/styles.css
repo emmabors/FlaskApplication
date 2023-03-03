@@ -1,0 +1,21 @@
+
+
+ul {
+    list-style-type: none;
+}
+
+
+.links-container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+  }
+
+.welcome{
+    text-align:center;
+    margin-left: 44px;
+}
