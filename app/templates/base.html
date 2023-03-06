@@ -12,26 +12,25 @@
     <title>Flask App - {% block title %}  {% endblock %}</title>
 </head>
 <body>
-  <div class="links-container">
-    <ul class="nav-justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link-home"  href="{{url_for('home')}}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-Pokemon" href="{{url_for('submit_pokemon')}}">Pokemon</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-login" href="{{url_for('login')}}">Login</a>
-        </li> 
-      </ul>
-  </div>
-
-</body>
-<div class="container">
+  {% include './includes/nav.html' %} 
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %} 
+    {% for category, message in messages %} 
+      <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  <div class="container">
     
     {% block content %}
 
     {% endblock %}
 
 </div>
+</body>
+
 </html>
