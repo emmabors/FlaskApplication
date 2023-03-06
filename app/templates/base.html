@@ -12,6 +12,9 @@
     <title>Flask App - {% block title %}  {% endblock %}</title>
 </head>
 <body>
+  <div class="pokemon-image">
+    <img src="https://freepngimg.com/thumb/pokemon/35997-1-anime-pokemon-transparent-picture.png" alt="Pikachu"/>
+  </div>
   {% include './includes/nav.html' %} 
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %} 

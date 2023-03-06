@@ -72,7 +72,7 @@ def logout():
         logout_user()
         flash('You have succesfully logged out.', 'warning')
         return redirect(url_for('login'))
-    
+     
 
 
          

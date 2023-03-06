@@ -4,15 +4,48 @@ ul {
     list-style-type: none;
 }
 
+li{
+    display: inline-block;
+   padding: 15px 15px;
+}
+
+body{
+    background-color: blue;
+    display: center;
+    background-image: url("https://www.freepnglogos.com/uploads/pokemon-logo-transparent-png-2.png");
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.pokemon-image{
+    text-align: center;
+    background-image: center;
+    position: absolute;
+    height: 0%;
+    bottom: 0;
+    margin-top: 80%; 
+    margin-left: 35%;
+}
+
+img{
+    height:400px;
+    width: 400px;
+}
+
+
+
+
+
 
 .links-container {
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
     padding: 20px;
     text-decoration: none;
+    margin-top: 350px;
   }
 
 .welcome{
