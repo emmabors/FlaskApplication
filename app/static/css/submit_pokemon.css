@@ -12,3 +12,31 @@ p {
     min-width: 50px;
 }
 
+.mb-3{
+    text-align: center;
+}
+
+.form-control{
+    margin: auto;
+    display: block;
+}
+
+.btn{
+    margin: auto;
+    display: block;
+}
+
+.pokemons-names{
+    font-weight: bold;
+    color: yellowgreen;
+}
+
+.names{
+    font-weight: bold;
+    color: yellowgreen;
+}
+
+.form-label{
+    font-weight: bold;
+    color: rgb(205, 50, 50);
+}

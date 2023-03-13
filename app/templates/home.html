@@ -9,13 +9,20 @@ Home
 {% endblock %}
 
 {% block content %}
-<br>
-<h2 class="welcome"> Welcome!</h2>
-<div class="invite">
-<h3>Login or Register!</h3> 
-</div>
-<div class="description">
-<h3>On this site you can learn about Pokemon!</h3>
-</div>
-<br>
+    <h2 class="welcome"> Welcome! Login or Register!</h2>
+    <div class="description">
+    <h3>On this site you can play with Pokemon!</h3>
+    </div>
+    <br>
+    {% for user in users %}
+    {% if user != current_user %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{url_for('static', filename='images/pikachu.png')}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{user.first_name}}</h5>
+        <a href="#" class="btn btn-primary">Attack</a>
+        </div>
+  </div>
+  {% endif %} 
+  {% endfor %}
 {% endblock %}

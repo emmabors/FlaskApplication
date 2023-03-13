@@ -7,7 +7,7 @@
 {% endblock %}
 
 <a> </a>
-<p>Here are some examples of different Pokemon...</p>
+<p class="names">Here are some examples of different Pokemon...</p>
 <ul class="pokemons-names">
     {% for pokemon in pokemons %}
     <li>{{pokemon}}</li>
@@ -16,9 +16,9 @@
 <form action="/submit_pokemon" method="POST" class="list">
     <div class="mb-3">
       <label for="pokemon_name" class="form-label">Pokemon Name:</label>
-      <input type="pokemon_name" class="form-control" id="pokemon_name" name="pokemon_name">
+      <input type="pokemon_name" class="form-control" id="pokemon_name" name="pokemon_name" style="max-width:50%">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Search</button>
     <div style="color: red;">
         <small>{{error}}</small>
     </div>
@@ -30,18 +30,25 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Base Experience</th>
+        <th scope="col">Attack Base Stat</th>
+        <th scope="col">Defense Base Stat</th>
         <th scope="col">Sprite</th>
       </tr>
     </thead>
     <tbody>
     <div class="listedpoke-container">
       <tr>
-        <th scope="row">{{pokemon_data.Pokemon.title()}}</th>
-        <td>{{pokemon_data.Base_experience}}</td>
-        <td>{{pokemon_data.Sprite}}</td>
+        <th scope="row">{{pokemon_data.pokemon_name.title()}}</th>
+        <td>{{pokemon_data.base_experience}}</td>
+        <td>{{pokemon_data.attack_base_stat}}</td>
+        <td>{{pokemon_data.defense_base_stat}}</td>
+        <td><img src="{{pokemon_data.front_shiny}}" alt="pokemon image"></td>
+        <!-- <td>{{pokemon_data.front_shiny}}</td> -->
       </tr>
     </div> 
     </tbody>
   </table>
-{% endif %}
+  <a href="{{url_for('pokemons.catch', pokemon_name=pokemon_data.pokemon_name)}}"type="submit" class="btn btn-primary" style="width: 30%">! Catch !
+  </a>
+  {% endif %}
 {% endblock %}

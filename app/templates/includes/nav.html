@@ -1,6 +1,9 @@
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/nav.css') }}">
+{% endblock %}
 <nav>
     <div class="links-container">
-      <ul class="nav-justify-content-center">
+      <ul class="nav-justify-content-center" style="max-width: 40%">
         {% if current_user.is_authenticated  %}
         <li class="nav-item">
           <a class="nav-login" href="#">Hello, {{current_user.first_name}}</a>
@@ -9,7 +12,10 @@
             <a class="nav-link-home"  href="{{url_for('main.home')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-Pokemon" href="{{url_for('main.submit_pokemon')}}">Pokemon</a>
+            <a class="nav-Pokemon" href="{{url_for('main.submit_pokemon')}}">Find Pokemon</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-home"  href="{{url_for('pokemons.view_team')}}">View Team</a>
           </li>
           <li class="nav-item">
             <a class="nav-login" href="{{url_for('auth.logout')}}">Logout</a>

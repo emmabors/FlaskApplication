@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+Your Team
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="description">
+    <h1>View Team</h1>
+    </div>
+    <br>
+    {% if pokemons %}
+    {% for pokemon in pokemons %}
+    <div class="pokemons" style="width: 18rem;">
+        <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
+        <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+          <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
+          <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
+        </div>
+      </div>
+  {% endfor %}
+  {% endif %}
+  {% endblock %}
