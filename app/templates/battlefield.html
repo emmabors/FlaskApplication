@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+BATTLEFIELD
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/battlefield.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>BATTLEFIELD</h1>
+{% if myteam %}
+{% for pokemon in myteam %}
+<div class="container-1">
+<h1 class="myteam">My Team</h1>
+<div class="text-decoration-none mb-3" style="width: 10rem;">
+    <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
+    <div class="card-body1">
+    <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
+    <p>**Your Team**</p>
+    <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+      <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
+      <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
+    </div>
+</div>
+</div>
+
+{% endfor %}
+{% endif %}
+<br>
+<br>
+<br>
+{% if otherteam %}
+{% for pokemon in otherteam %}
+<div class="container-2">
+  <div class="text-decoration-none mb-3" style="width: 10rem;">
+    <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
+    <div class="card-body2">
+    <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
+    <p>**Other Team**</p>
+    <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+      <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
+      <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
+    </div>
+    <button type="button" class="btn btn-danger mx-auto" style="width: 50%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      ATTACK
+    </button>
+</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
+
+

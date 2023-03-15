@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+Your Team
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+      {% if current_user.id == pokemon.user_id %}
+      <div class="card text-decoration-none" style="width: 18rem;">
+        <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
+        <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+          <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
+          <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
+        </div>
+      </div>
+     <button type="button" href="{{url_for('pokemons.remove_pokemon', pokemon_id=pokemon.id)}}" class="btn btn-danger mx-auto" style="width: 50%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete
+      </button>
+      {% else %}
+      <div class="card text-decoration-none" style="width: 18rem;">
+      <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
+      <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+        <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
+        <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
+      </div>
+      <button type="button" class="btn btn-danger mx-auto" style="width: 50%" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete
+      </button>
+   </div>
+    {% endif %}
+    </div>  
+{% endblock %}
+
+
+ 

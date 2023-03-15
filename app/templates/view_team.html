@@ -5,7 +5,7 @@ Your Team
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@ Your Team
     <br>
     {% if pokemons %}
     {% for pokemon in pokemons %}
-    <div class="pokemons" style="width: 18rem;">
+    <a href="{{url_for('pokemons.view_single_pokemon', pokemon_id=pokemon.id)}}" class="card text-decoration-none mb-3" style="width: 18rem;">
         <img class="card-img-top" src="{{pokemon.front_shiny}}" alt="Card image cap">
         <div class="card-body">
         <h5 class="card-title">{{pokemon.pokemon_name.title()}}</h5>
@@ -23,7 +23,7 @@ Your Team
           <p>Attack Stat: {{pokemon.attack_base_stat}}</p>
           <p>Defense Stat: {{pokemon.defense_base_stat}}</p>
         </div>
-      </div>
+      </a>
   {% endfor %}
   {% endif %}
   {% endblock %}

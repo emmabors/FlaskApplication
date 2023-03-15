@@ -40,3 +40,7 @@ p {
     font-weight: bold;
     color: rgb(205, 50, 50);
 }
+
+body{
+    background-color: rgba(13, 0, 162, 0.859)
+}

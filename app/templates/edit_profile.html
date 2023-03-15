@@ -4,6 +4,10 @@
 Edit Profile
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
 {% block content %} 
 <h1>Edit Profile Page</h1>
   <form action="{{url_for('auth.edit_profile')}}" method="POST">

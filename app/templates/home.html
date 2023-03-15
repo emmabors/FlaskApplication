@@ -5,7 +5,7 @@ Home
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,8 +20,8 @@ Home
         <img class="card-img-top" src="{{url_for('static', filename='images/pikachu.png')}}" alt="Card image cap">
         <div class="card-body">
         <h5 class="card-title">{{user.first_name}}</h5>
-        <a href="#" class="btn btn-primary">Attack</a>
-        </div>
+        <a href="{{url_for('pokemons.battlefield', user_id=user.id)}}" class="btn btn-primary">Attack</a>
+      </div>
   </div>
   {% endif %} 
   {% endfor %}

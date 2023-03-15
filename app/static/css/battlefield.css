@@ -1,0 +1,22 @@
+
+
+body{
+    background-color: blue
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    color: yellow
+}
+
+
+.btn{
+    float: center;
+}
+
+.card-title{
+    color:yellow;
+}

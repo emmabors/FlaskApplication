@@ -76,8 +76,11 @@ class User(UserMixin, db.Model):
         db.session.commit()
 
     def remove_pokemon(self, user):
-        self.teams.remove(user)
+        self.teams.delete(user)
         db.session.commit()
+
+    # def battle_user(self, user):
+    #     self.team??
 
          
 

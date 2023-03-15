@@ -1,27 +1,9 @@
 from flask import render_template, request, flash, redirect, url_for
 import requests
 from app.blueprints.pokemons.forms import PokemonForm
-from app.models import Pokemon
+from app.models import Pokemon, User
 from app.blueprints.pokemons import pokemons
 from flask_login import current_user, login_required
-
-# @pokemon.route('/create_post', methods=['GET', 'POST'])
-# @login_required
-# def create_post():
-#     form = PostForm()
-#     if request.method == 'POST' and form.validate_on_submit():
-#         new_post_data = { 
-#             'img_url': form.img_url.data,
-#             'title': form.title.data,
-#             'caption': form.caption.data,
-#             'user_id': current_user.id
-#         }
-#         new_post = Post()
-#         new_post.from_dict(new_post_data)
-#         new_post.save_to_db()
-#         flash('Your post has been made!', 'success')
-#         return redirect(url_for('posts.view_posts'))
-#     return render_template('create_post.html', form=form)
 
 @pokemons.route('/view_team', methods=['GET'])
 @login_required 
@@ -76,37 +58,21 @@ def catch(pokemon_name):
 @login_required
 def remove_pokemon(pokemon_id):
     pokemon = Pokemon.query.get(pokemon_id)
-    if pokemon:
-        current_user.remove_pokemon(pokemon)
-        flash(f'You removed {{Pokemon.pokemon_name.title()}} from your team.', 'warning')
-    return redirect(url_for('main.home'))
-
-# @posts.route('/update/<int:post_id>', methods=['GET', 'POST'])
-# @login_required 
-# def update_post(post_id):
-#     form = PostForm()
-#     post = Post.query.get(post_id)
-#     if request.method == 'POST' and form.validate_on_submit():
-#         new_post_data = { 
-#             'img_url': form.img_url.data,
-#             'title': form.title.data,
-#             'caption': form.caption.data,
-#             'user_id': current_user.id
-#         }
-#         post.from_dict(new_post_data)
-#         post.update_to_db()
-#         flash('Profile is updated!', 'success')
-#         return redirect(url_for('main.home'))
-#     return render_template('edit_profile.html', form=form)
-
-@pokemons.route('/delete/<int:pokemon_id>', methods=['GET'])
-@login_required
-def delete_pokemon(pokemon_id):
-    pokemon = Pokemon.query.get(pokemon_id)
     if current_user.id == pokemon.user_id:
-        post.delete_pokemon()
-    else:
-        flash('🐍 You do not have permission to delete another players pokemon', 'danger')
+        pokemon.remove_pokemon()
+        flash(f'You removed {{Pokemon.pokemon_name.title()}} from your team.', 'warning')
+        return redirect(url_for('pokemons.view_team'))
     return redirect(url_for('pokemons.view_team'))
+
+@pokemons.route('/battlefield/<user_id>', methods = ['GET'])
+@login_required 
+def battlefield(user_id):
+    user = User.query.get(user_id)
+    myteam = current_user.teams
+    otherteam = user.teams 
+    return render_template('battlefield.html', myteam=myteam, otherteam=otherteam)
+
+
+
 
     
